@@ -1,15 +1,8 @@
 from .base import *
+import dj_database_url
 
 DEBUG = bool(os.getenv('DA_STATUS'))
 ALLOWED_HOSTS = []
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': ''
-    }
-}
+DATABASES = {'default': dj_database_url.config(conn_max_age=600, ssl_require=True)}
+
