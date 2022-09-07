@@ -12,7 +12,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     date_joined = models.DateTimeField(verbose_name='Date Joined', auto_now_add=True)
-    is_active = models.BooleanField(verbose_name='Active', default=False)
+    is_active = models.BooleanField(verbose_name='Active', default=True)
 
     objects = UserManager()
 
