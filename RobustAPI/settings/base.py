@@ -7,16 +7,8 @@ load_dotenv(find_dotenv())
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = str(os.getenv('DA_KEY'))
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.getenv('DA_STATUS'))
-
-ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -62,16 +54,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "RobustAPI.wsgi.application"
 
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
-
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -112,3 +94,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+# Custom User Model
+AUTH_USER_MODEL = 'accounts.User'
