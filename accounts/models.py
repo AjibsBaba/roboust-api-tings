@@ -13,6 +13,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=255)
     date_joined = models.DateTimeField(verbose_name='Date Joined', auto_now_add=True)
     is_active = models.BooleanField(verbose_name='Active', default=True)
+    is_staff = models.BooleanField(default=False, verbose_name='Staff Status')
 
     objects = UserManager()
 
