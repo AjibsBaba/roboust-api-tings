@@ -7,7 +7,7 @@ from accounts.managers import UserManager
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    id = models.UUIDField(default=uuid.uuid4(), editable=False, primary_key=True)
+    id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
     email = models.EmailField(verbose_name='Email Address', unique=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
