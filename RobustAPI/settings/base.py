@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 from pathlib import Path
 
 from dotenv import find_dotenv, load_dotenv
@@ -20,7 +21,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'rest_framework',
-    'accounts'
+    'rest_framework_simplejwt',
+    'accounts',
+    'news'
 ]
 
 MIDDLEWARE = [
@@ -90,7 +93,20 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Rest Framework Configuration
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ]
 }
 
 # Custom User Model
 AUTH_USER_MODEL = 'accounts.User'
+
+# JWT Configuration
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
